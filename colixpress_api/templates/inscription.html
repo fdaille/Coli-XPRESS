@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}	
+{% block content %}
+    {{ super() }}
+    <div class="register-box">
+        <h1>Inscription</h1>
+        <p>Vous voulez vous inscrire en tant que :</p>
+        <a href="/inscription/particulier/" alt="inscription_pro"><button class="button" style="vertical-align:left; margin-right: 1em;"><span>Particulier </span></button></a><a href="/inscription/professionnel/" alt="inscription_pro"><button class="button" style="vertical-align:right"><span>Professionnel </span></button></a>
+        <br>
+    </div>
+{% endblock %}

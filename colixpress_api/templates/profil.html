@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}	
+{% block content %}
+    {{ super() }}
+    <div class="register-box">
+        <h1>Mon profil</h1>
+        {% if session['user'] %}
+            {% if session['user']['activite'] == 'particulier' %}
+                <p style="font-size: 17px;">Connecté en tant que Particulier: <strong>{{ session['user']['prenom_user'] }} {{ session['user']['nom_user'] }}</strong>.</p>
+                <button class="button" style="vertical-align:left; margin-right: 1em;"><span>Suivis </span></button><a href="/envoi/" alt="envoi"><button class="button" style="vertical-align:right"><span>Envoi </span></button></a>
+                <p style="margin-top: 1em; margin-bottom: 0; font-size: 26px;">Modifiez vos paramètres :</p>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p style="color:#B32000; text-align: left; padding-left: 4em;">{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form method="POST">
+                    <label for="nom_fournisseur">Nom</label>
+                    <input type="text" id="nom_fournisseur" name="nom_fournisseur" placeholder="Votre nom..." value="{{ session['user']['nom_user'] }}">
+                    <label for="prenom_fournisseur">Prénom</label>
+                    <input type="text" id="prenom_fournisseur" name="prenom_fournisseur" placeholder="Votre prénom..." value="{{ session['user']['prenom_user'] }}">
+                    <label for="login_fournisseur">Adresse Email</label>
+                    <input type="text" id="login_fournisseur" name="login_fournisseur" placeholder="Votre adresse email..." readonly=True value="{{ session['user']['login'] }}">
+                    <label for="adresse_fournisseur">Adresse postale</label>
+                    <input type="text" id="adresse_fournisseur" name="adresse_fournisseur" placeholder="Votre adresse postale..." value="{{ session['user']['adresse'] }}">
+                    <label for="ville_fournisseur">Ville</label>
+                    <input type="text" id="ville_fournisseur" name="ville_fournisseur" placeholder="Votre ville..." value="{{ session['user']['nom_ville'] }}"> 
+                    <label for="mdp_fournisseur">Mot de passe</label>
+                    <input type="password" id="mdp_fournisseur" name="mdp_fournisseur" placeholder="Modifiez votre mot de passe..."><br>
+                    <button class="button" style="vertical-align:middle" type="submit"><span>Enregistrer </span></button>
+                </form>
+            {% elif session['user']['activite'] == 'admin' %}
+                <p>admin account</p>
+            {% elif session['user']['activite'] != 'particulier' and session['user']['activite'] != 'operateur' and session['user']['activite'] != 'admin' %}
+                <p style="font-size: 17px;">Connecté en tant que Fournisseur: <strong>{{ session['user']['nom_user'] }}</strong> (ref. {{ session['user']['ref_user'] }}).</p>
+                <button class="button" style="vertical-align:left; margin-right: 1em;"><span>Suivis </span></button><a href="/envoi/" alt="envoi"><button class="button" style="vertical-align:right"><span>Envoi </span></button></a>
+                <p style="margin-top: 1em; margin-bottom: 0; font-size: 26px;">Modifiez vos paramètres :</p>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p style="color:#B32000; text-align: left; padding-left: 4em;">{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form method="POST">
+                    <label for="nom_fournisseur">Nom</label>
+                    <input type="text" id="nom_fournisseur" name="nom_fournisseur" placeholder="Votre nom..." value="{{ session['user']['nom_user'] }}">
+                    <label for="activite_fournisseur">Votre activité</label>
+                    <input type="text" id="activite_fournisseur" name="activite_fournisseur" placeholder="Votre adresse email..." value="{{ session['user']['activite'] }}">
+                    <label for="login_fournisseur">Adresse Email</label>
+                    <input type="text" id="login_fournisseur" name="login_fournisseur" placeholder="Votre adresse email..." readonly=True value="{{ session['user']['login'] }}">
+                    <label for="adresse_fournisseur">Adresse postale</label>
+                    <input type="text" id="adresse_fournisseur" name="adresse_fournisseur" placeholder="Votre adresse postale..." value="{{ session['user']['adresse'] }}">
+                    <label for="ville_fournisseur">Ville</label>
+                    <input type="text" id="ville_fournisseur" name="ville_fournisseur" placeholder="Votre ville..." value="{{ session['user']['nom_ville'] }}"> 
+                    <label for="mdp_fournisseur">Mot de passe</label>
+                    <input type="password" id="mdp_fournisseur" name="mdp_fournisseur" placeholder="Modifiez votre mot de passe..."><br>
+                    <button class="button" style="vertical-align:middle" type="submit"><span>Enregistrer </span></button>
+                </form>
+            {% else %}
+                <form method="POST">
+                    <p style="font-size: 17px;">Connecté en tant qu'Opérateur: <strong>{{ session['user']['prenom_user'] }} {{ session['user']['nom_user'] }}</strong>.</p>
+                    <p style="margin-top: 1em; margin-bottom: 0; font-size: 26px;">Modifiez vos paramètres :</p>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p style="color:#B32000; text-align: left; padding-left: 4em;">{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <label for="nom_fournisseur">Nom</label>
+                    <input type="text" id="nom_fournisseur" name="nom_fournisseur" placeholder="Votre nom..." value="{{ session['user']['nom_user'] }}">
+                    <label for="prenom_fournisseur">Prénom</label>
+                    <input type="text" id="prenom_fournisseur" name="prenom_fournisseur" placeholder="Votre prénom..." value="{{ session['user']['prenom_user'] }}">
+                    <label for="login_fournisseur">Adresse Email</label>
+                    <input type="text" id="login_fournisseur" name="login_fournisseur" placeholder="Votre adresse email..." readonly=True value="{{ session['user']['login'] }}">
+                    <label for="adresse_fournisseur">Adresse postale</label>
+                    <input type="text" id="adresse_fournisseur" name="adresse_fournisseur" placeholder="Votre adresse postale..." value="{{ session['user']['adresse'] }}">
+                    <label for="ville_fournisseur">Ville</label>
+                    <input type="text" id="ville_fournisseur" name="ville_fournisseur" placeholder="Votre ville..." value="{{ session['user']['nom_ville'] }}"> 
+                    <label for="mdp_fournisseur">Mot de passe</label>
+                    <input type="password" id="mdp_fournisseur" name="mdp_fournisseur" placeholder="Modifiez votre mot de passe..."><br>
+                    <button class="button" style="vertical-align:middle" type="submit"><span>Enregistrer </span></button>
+                </form>
+            {% endif %}
+        {% else %}
+        <meta http-equiv="refresh" content="0;URL=/connexion/">
+        {% endif %}
+    </div>
+{% endblock %}

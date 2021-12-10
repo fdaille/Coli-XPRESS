@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}	
+{% block content %}
+    {{ super() }}
+    <div class="register-box">
+        <h1>Inscription</h1>
+        <form method="POST">
+            <p>La création de compte est reservée aux particuliers voulant envoyer des colis.</p>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p style="color:#B32000; text-align: left; padding-left: 4em;">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <label for="nom_fournisseur">Nom</label>
+            <input type="text" id="nom_fournisseur" name="nom_fournisseur" placeholder="Votre nom...">
+            <label for="prenom_fournisseur">Prénom</label>
+            <input type="text" id="prenom_fournisseur" name="prenom_fournisseur" placeholder="Votre prénom...">
+            <label for="login_fournisseur">Adresse Email</label>
+            <input type="text" id="login_fournisseur" name="login_fournisseur" placeholder="Votre adresse email...">
+            <label for="adresse_fournisseur">Adresse postale</label>
+            <input type="text" id="adresse_fournisseur" name="adresse_fournisseur" placeholder="Votre adresse postale...">
+            <label for="ville_fournisseur">Ville</label>
+            <input type="text" id="ville_fournisseur" name="ville_fournisseur" placeholder="Votre ville...">
+            <label for="mdp_fournisseur">Mot de passe</label>
+            <input type="password" id="mdp_fournisseur" name="mdp_fournisseur" placeholder="Votre mot de passe..."><br>
+            <button class="button" style="vertical-align:middle" type="submit"><span>S'inscrire </span></button>
+        </form>    
+    </div>
+{% endblock %}

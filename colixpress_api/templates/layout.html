@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    {% if title %}
+    <title>{{ title }} - Coli'XPRESS</title>
+    {% else %}
+    <title>Coli'XPRESS</title>
+    {% endif %}
+</head>
+<body>
+    <div class="global">
+        <header class="header">
+            {% include "nav.html" %}
+            <div class="header-logo">
+                <a href="/home/"><img src="{{ url_for('static', filename='img/logo.png') }}" width="225" height="43" alt="logo"></a>
+            </div>
+        </header>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

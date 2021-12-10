@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}	
+{% block content %}
+    {{ super() }}
+    <div class="register-box">
+        <h1>Connexion</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color:#B32000; text-align: left; padding-left: 4em;">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <label for="login-adresse-mail">Adresse Email</label>
+            <input type="text" id="login-adresse-mail" name="login-adresse-mail" placeholder="Votre adresse email...">
+            <label for="login-mdp">Mot de passe</label>
+            <input type="password" id="login-mdp" name="login-mdp" placeholder="Votre mot de passe..."><br>
+            <button class="button" style="vertical-align:middle" type="submit"><span>Connexion </span></button>
+        </form>
+    </div>
+{% endblock %}

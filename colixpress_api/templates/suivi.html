@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}	
+{% block content %}
+    {{ super() }}
+    <div class="suivi-box">
+        <h1>COLIS N°{{ tracking_code }}</h1>
+        <input type="text" id="num-suivi" name="num-suivi" placeholder="27/01/2021 - 16h27 : Colis arrivé à la PLD." disabled><input type="submit" value=" ">
+        <input type="text" id="num-suivi" name="num-suivi" placeholder="27/01/2021 - 16h27 : Colis expédié." disabled><input type="submit" value=" ">
+        <input type="text" id="num-suivi" name="num-suivi" placeholder="27/01/2021 - 16h27 : Prêt à être expédié." disabled><input type="submit" value=" ">
+        <input type="text" id="num-suivi" name="num-suivi" placeholder="27/01/2021 - 16h27 : Colis arrivé à notre PLR." disabled><input type="submit" value=" ">
+        <input type="text" id="num-suivi" name="num-suivi" placeholder="26/01/2021 - 6h32 : Colis expédié." disabled><input type="submit" value=" ">
+        <input type="text" id="num-suivi" name="num-suivi" placeholder="25/01/2021 - 14h10 : Prêt à être expédié." disabled><input type="submit" value=" ">
+        <input type="text" id="num-suivi" name="num-suivi" placeholder="25/01/2021 - 13h45 : Colis déposé par le fournisseur." disabled><input type="submit" value=" ">
+    </div>
+{% endblock %}

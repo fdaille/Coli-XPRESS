@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}	
+{% block content %}
+    {{ super() }}
+    <div class="register-box">
+        <h1>Inscription</h1>
+        <p>La création de compte est reservée aux entreprises fournisseurs.</p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color:#B32000; text-align: left; padding-left: 4em;">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <label for="nom-entreprise">Nom de l'entreprise</label>
+            <input type="text" id="nom-entreprise" name="nom-entreprise" placeholder="Nom de votre entreprise...">
+            <label for="adresse-entreprise">Adresse de l'entreprise</label>
+            <input type="text" id="adresse-entreprise" name="adresse-entreprise" placeholder="Exemple : Chaussée du Port">
+            <label for="ville-entreprise">Ville</label>
+            <input type="text" id="ville-entreprise" name="ville-entreprise" placeholder="Votre ville...">
+            <label for="activite-entreprise">Activité de l'entreprise</label>
+            <input type="text" id="activite-entreprise" name="activite-entreprise" placeholder="Activité de votre entreprise...">
+            <label for="login-entreprise">Email</label>
+            <input type="text" id="login-entreprise" name="login-entreprise" placeholder="Votre adresse email...">
+            <label for="mdp-entreprise">Mot de passe</label>
+            <input type="password" id="mdp-entreprise" name="mdp-entreprise" placeholder="Votre mot de passe..."><br>
+            <button class="button" style="vertical-align:middle" type="submit"><span>S'inscrire </span></button>
+        </form>
+    </div>
+{% endblock %}

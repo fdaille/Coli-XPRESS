@@ -1,0 +1,17 @@
+{% block nav %}
+<div class="header-menu">
+    <div class="puce-descente">
+        <button class="puce-button"><img src="{{ url_for('static', filename='img/puce.png') }}"></button>
+        <div class="puce-descente-child">
+            <a href="/home/">Suivi de colis</a>
+            {% if session['user'] %}
+            <a href="/profil/">Mon profil</a>
+            <a href="/logout/">Déconnexion</a>
+            {% else %}
+            <a href="/connexion/">Connexion</a>
+            <a href="/inscription/">Inscription</a>   
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
